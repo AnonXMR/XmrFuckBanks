@@ -1,3 +1,6 @@
+import requests 
+
+
 print("                                                                                                     ")
 print("                                                                                                     ")
 print("                        ____      ___       ___       ___      ________                              ")
@@ -32,10 +35,8 @@ print("                                                                         
 print("                                                                                                     ")
 
 
-print("")
-print("")
-print("")
-import requests
+print("\n")
+print("\n")
 
 # URL de l'API pour obtenir les données sur XMR
 url = 'https://api.minerstat.com/v2/coins?list=XMR'
@@ -48,11 +49,11 @@ network_hashrate = liste_datas_xmr[0]['network_hashrate'] #H/S
 reward_per_block_in_xmr = liste_datas_xmr[0]['reward_block'] #XMR/block
 
 
-CostElecCentime = int(input("Enter your kWh cost in cents here: "))
+CostElecCentime = int(input(">>>>Enter your kWh cost in cents here: "))
 print("")
-HashRate = int(input("Enter your hashrate (H/s) : "))
+HashRate = int(input(">>>>Enter your hashrate (H/s) : "))
 print("")
-ConsoWatt = int(input("Enter your total electrical consumption (in Watts) : "))
+ConsoWatt = int(input(">>>>Enter your total electrical consumption (in Watts) : "))
 print("")
 20
 HoursByDay = 24
@@ -65,31 +66,38 @@ CoutTotalDaily = CostElecEuros * Conso_kWh * HoursByDay
 CoutTotalMonth = CoutTotalDaily * DayByMonth
 CoutTotalYear = CoutTotalMonth * MonthByYear
 
-print("For your information : : ")
-print("Your daily electricity cost : ", CoutTotalDaily, "USD.")
-print("Your monthly electricity cost : ", CoutTotalMonth, "USD.")
-print("Your yearly electricity cost : ", CoutTotalYear, "USD.")
-print("")
+print("========================= For your information : =========================")
+print("\n")
+print("Total hashrate :", int(network_hashrate), "H/s.")
+print("Price :", int(price_xmr_usd), "USD.")
+print("Daily electricity cost : ", CoutTotalDaily, "USD.")
+print("Mnthly electricity cost : ", CoutTotalMonth, "USD.")
+print("Yearly electricity cost : ", CoutTotalYear, "USD.")
+print("\n")
+print("__________________________________________________________________________")
 
 MyHashrateRate = HashRate/network_hashrate     #ma part de puissance de calcul par rapport au réseau
 RewardYearly = MyHashrateRate * reward_per_block_in_xmr * 720 * 365 #reward annuel en xmr
 RewardMonthly = RewardYearly / 12                                   #reward mensuelle en xmr
 RewardDaily = RewardMonthly / 30                                    #reward jour en xmr
-
-print("Your daily XMR reward : ", RewardDaily, "XMR")
-print("Your monthly XMR reward : ", RewardMonthly, "XMR")
-print("Your yearly XMR reward : ", RewardYearly, "XMR")
+print("\n")
+print("Daily XMR reward : ", RewardDaily, "XMR")
+print("Monthly XMR reward : ", RewardMonthly, "XMR")
+print("Yearly XMR reward : ", RewardYearly, "XMR")
 print("...calculations based on a theoretical number of 720 blocks per day*")
-print("")
+print("\n")
+print("__________________________________________________________________________")
 ProfitY = float(RewardYearly * price_xmr_usd -CoutTotalYear)
 ProfitM = float(RewardMonthly * price_xmr_usd - CoutTotalMonth)
 ProfitD = float(RewardDaily * price_xmr_usd - CoutTotalDaily)
+print("")
+print("Here are your theoreticals :")
+print("               - daily profits : ", ProfitD, "USD.")
+print("               - monthly profits : ", ProfitM, "USD.")
+print("               - yearly profits : ", ProfitY, "USD.")
+print("\n")
 
-print("Here are your theoretical daily profits : ", ProfitD, "USD.")
-print("Here are your theoretical monthly profits : ", ProfitM, "USD.")
-print("Here are your theoretical annual profits : ", ProfitY, "USD.")
-print("")
-print("")
+
 if ProfitY >= 0:
     print("Worth it :D !")
     print("")
