@@ -1,4 +1,4 @@
-Put MAIN, CONFIG and REQUIEREMENTS in the same folder
+Put MAIN, CONFIG and REQUIEREMENTS in the same folder \n
 Open CMD in this folder (Right clic --> OPEN IN TERMINAL)
 copy paste this : pip install -r requirements.txt
 Execute MAIN.PY
