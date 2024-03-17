@@ -2,6 +2,6 @@
 
 2: Open the folder, then right click and ''Open in terminal"
 
-3: Copy/Paste this : "pip install -r requirements.txt" and let the download finish
+3: Copy/Paste this : "pip install -r requirements.txt" and let the download finish and close the terminal.
 
 4: Execute "main.py"
